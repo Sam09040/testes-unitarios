@@ -24,3 +24,12 @@ class AppTest(unittest.TestCase):
             response.get_data(as_text=True),
             "Erro no test_print_hello_success!",
         )
+
+    def test_print_hello_error(self):
+        response = self.app.get("/hello")
+        self.assertEqual(400, response.status_code, "Erro no test_print_hello_error!")
+        self.assertEqual(
+            "Nome não informado",
+            response.get_data(as_text=True),
+            "Erro no test_print_hello_error!",
+        )
